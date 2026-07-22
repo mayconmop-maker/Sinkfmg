@@ -46,6 +46,13 @@
       "migrations_dir": "drizzle"
     }
   ],
+  "r2_buckets": [
+    {
+      "binding": "R2",
+      "preview_bucket_name": "sink",
+      "bucket_name": "sink"
+    }
+  ],
   "vars": {
     "NUXT_CF_ACCOUNT_ID": "bf75e5d04fd1df063f1f13781bb38e1f"
   },
