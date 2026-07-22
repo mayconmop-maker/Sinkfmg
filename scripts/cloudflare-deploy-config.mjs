@@ -83,8 +83,11 @@ if (env.DEPLOY_R2_BUCKET_NAME) {
   r2.bucket_name = env.DEPLOY_R2_BUCKET_NAME
   r2.preview_bucket_name = env.DEPLOY_R2_PREVIEW_BUCKET_NAME ?? env.DEPLOY_R2_BUCKET_NAME
 }
-else {
+else if (Array.isArray(config.r2_buckets)) {
   config.r2_buckets = config.r2_buckets.filter(({ binding }) => binding !== 'R2')
+
+  if (config.r2_buckets.length === 0)
+    delete config.r2_buckets
 }
 
 await writeFile(outputPath, `${JSON.stringify(config, null, 2)}\n`, 'utf8')
